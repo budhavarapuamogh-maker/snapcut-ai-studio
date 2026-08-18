@@ -17,7 +17,7 @@ export const Route = createFileRoute("/api-docs")({
       },
     ],
   }),
-  component: ApiDocs;
+  component: ApiDocs,
 });
 
 function CodeBlock({ label, code }: { label: string; code: string }) {
