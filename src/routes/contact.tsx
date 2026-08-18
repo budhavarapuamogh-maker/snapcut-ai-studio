@@ -69,8 +69,8 @@ function Contact() {
         <div className="grid gap-5">
           <div className="grid gap-2">
             <Label htmlFor="name">Name</Label>
-            <Input id="name" name="name" maxLength={100} aria-invalid={!!errors.name} />
-            {errors.name ? <p className="text-xs text-destructive">{errors.name}</p> : null}
+            <Input id="name" name="name" maxLength={100} aria-invalid={!!errors['name']} />
+            {errors['name'] ? <p className="text-xs text-destructive">{errors['name']}</p> : null}
           </div>
           <div className="grid gap-2">
             <Label htmlFor="email">Email</Label>
@@ -79,14 +79,14 @@ function Contact() {
               name="email"
               type="email"
               maxLength={255}
-              aria-invalid={!!errors.email}
+              aria-invalid={!!errors['email']}
             />
-            {errors.email ? <p className="text-xs text-destructive">{errors.email}</p> : null}
+            {errors['email'] ? <p className="text-xs text-destructive">{errors['email']}</p> : null}
           </div>
           <div className="grid gap-2">
             <Label htmlFor="message">Message</Label>
             <Textarea id="message" name="message" rows={5} maxLength={1000} />
-            {errors.message ? <p className="text-xs text-destructive">{errors.message}</p> : null}
+            {errors['message'] ? <p className="text-xs text-destructive">{errors['message']}</p> : null}
           </div>
           <Button type="submit" variant="hero" size="lg">
             Send message
