@@ -35,10 +35,10 @@ export function SiteHeader() {
 
         <div className="hidden items-center gap-2 md:flex">
           <Button variant="ghost" size="sm" asChild>
-            <Link to="/contact">Talk to sales</Link>
+            <Link to="/auth">Sign in</Link>
           </Button>
           <Button variant="hero" size="sm" asChild>
-            <Link to="/pricing">Start free</Link>
+            <Link to="/dashboard">Open workspace</Link>
           </Button>
         </div>
 
