@@ -35,10 +35,10 @@ export function SiteHeader() {
 
         <div className="hidden items-center gap-2 md:flex">
           <Button variant="ghost" size="sm" asChild>
-            <Link to="/contact">Talk to sales</Link>
+            <Link to="/auth">Sign in</Link>
           </Button>
           <Button variant="hero" size="sm" asChild>
-            <Link to="/pricing">Start free</Link>
+            <Link to="/dashboard">Open workspace</Link>
           </Button>
         </div>
 
@@ -66,9 +66,16 @@ export function SiteHeader() {
               {item.label}
             </Link>
           ))}
+          <Link
+            to="/auth"
+            onClick={() => setOpen(false)}
+            className="block rounded-md px-3 py-2.5 text-sm text-muted-foreground hover:text-foreground"
+          >
+            Sign in
+          </Link>
           <Button variant="hero" className="mt-2 w-full" asChild>
-            <Link to="/pricing" onClick={() => setOpen(false)}>
-              Start free
+            <Link to="/dashboard" onClick={() => setOpen(false)}>
+              Open workspace
             </Link>
           </Button>
         </nav>
