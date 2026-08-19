@@ -14,6 +14,42 @@ export type Database = {
   }
   public: {
     Tables: {
+      api_keys: {
+        Row: {
+          created_at: string
+          id: string
+          key_hash: string
+          last_used_at: string | null
+          name: string
+          prefix: string
+          revoked: boolean
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          key_hash: string
+          last_used_at?: string | null
+          name?: string
+          prefix: string
+          revoked?: boolean
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          key_hash?: string
+          last_used_at?: string | null
+          name?: string
+          prefix?: string
+          revoked?: boolean
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       jobs: {
         Row: {
           created_at: string
@@ -48,6 +84,48 @@ export type Database = {
           result_url?: string | null
           source_url?: string | null
           status?: Database["public"]["Enums"]["job_status"]
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      payments: {
+        Row: {
+          amount_cents: number
+          created_at: string
+          credits: number
+          currency: string
+          id: string
+          order_id: string
+          payment_id: string | null
+          provider: string
+          status: Database["public"]["Enums"]["payment_status"]
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          amount_cents: number
+          created_at?: string
+          credits: number
+          currency?: string
+          id?: string
+          order_id: string
+          payment_id?: string | null
+          provider?: string
+          status?: Database["public"]["Enums"]["payment_status"]
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          amount_cents?: number
+          created_at?: string
+          credits?: number
+          currency?: string
+          id?: string
+          order_id?: string
+          payment_id?: string | null
+          provider?: string
+          status?: Database["public"]["Enums"]["payment_status"]
           updated_at?: string
           user_id?: string
         }
@@ -109,6 +187,10 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      add_credits: {
+        Args: { _amount: number; _user_id: string }
+        Returns: number
+      }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
@@ -120,6 +202,7 @@ export type Database = {
     Enums: {
       app_role: "admin" | "user"
       job_status: "queued" | "processing" | "succeeded" | "failed"
+      payment_status: "created" | "paid" | "failed"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -249,6 +332,7 @@ export const Constants = {
     Enums: {
       app_role: ["admin", "user"],
       job_status: ["queued", "processing", "succeeded", "failed"],
+      payment_status: ["created", "paid", "failed"],
     },
   },
 } as const
