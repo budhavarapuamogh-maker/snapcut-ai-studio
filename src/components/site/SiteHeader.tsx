@@ -66,9 +66,16 @@ export function SiteHeader() {
               {item.label}
             </Link>
           ))}
+          <Link
+            to="/auth"
+            onClick={() => setOpen(false)}
+            className="block rounded-md px-3 py-2.5 text-sm text-muted-foreground hover:text-foreground"
+          >
+            Sign in
+          </Link>
           <Button variant="hero" className="mt-2 w-full" asChild>
-            <Link to="/pricing" onClick={() => setOpen(false)}>
-              Start free
+            <Link to="/dashboard" onClick={() => setOpen(false)}>
+              Open workspace
             </Link>
           </Button>
         </nav>
