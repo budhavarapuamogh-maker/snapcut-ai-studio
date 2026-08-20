@@ -110,14 +110,21 @@ function Dashboard() {
             {account.data?.display_name ? `Hey, ${account.data.display_name}` : "Your cutouts"}
           </h1>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-3">
           <Badge variant="secondary" className="px-3 py-1.5 text-sm">
             <Sparkles className="mr-1.5 size-3.5" />
             {account.data?.credits ?? 0} credits
           </Badge>
           <Button variant="ghost" size="sm" asChild>
-            <Link to="/pricing">Top up</Link>
+            <Link to="/billing">Billing</Link>
           </Button>
+          <Button variant="ghost" size="sm" asChild>
+            <Link to="/api-keys">API keys</Link>
+          </Button>
+          <Button variant="ghost" size="sm" asChild>
+            <Link to="/admin">Admin</Link>
+          </Button>
+
           <Button variant="outline" size="sm" onClick={signOut}>
             <LogOut className="mr-1.5 size-4" /> Sign out
           </Button>
