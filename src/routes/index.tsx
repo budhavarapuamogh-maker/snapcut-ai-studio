@@ -150,8 +150,9 @@ function Home() {
             </p>
           </div>
           <Button variant="hero" size="xl" asChild>
-            <Link to="/pricing">See plans</Link>
+            <Link to="/dashboard">Upload an image</Link>
           </Button>
+
         </div>
       </section>
     </>
