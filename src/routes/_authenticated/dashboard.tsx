@@ -158,7 +158,21 @@ function Dashboard() {
             type="button"
             onClick={() => inputRef.current?.click()}
             disabled={busy}
-            className="mt-5 flex w-full flex-col items-center justify-center rounded-xl border border-dashed border-border bg-background/40 px-6 py-12 text-center transition-colors hover:border-primary disabled:opacity-60"
+            onDragOver={(event) => {
+              event.preventDefault();
+              if (!busy) setDragging(true);
+            }}
+            onDragLeave={() => setDragging(false)}
+            onDrop={(event) => {
+              event.preventDefault();
+              setDragging(false);
+              if (busy) return;
+              const file = event.dataTransfer.files?.[0];
+              if (file) void handleFile(file);
+            }}
+            className={`mt-5 flex w-full flex-col items-center justify-center rounded-xl border border-dashed bg-background/40 px-6 py-12 text-center transition-colors hover:border-primary disabled:opacity-60 ${
+              dragging ? "border-primary bg-primary/5" : "border-border"
+            }`}
           >
             {busy ? (
               <Loader2 className="size-8 animate-spin text-primary" />
@@ -166,7 +180,14 @@ function Dashboard() {
               <ImageUp className="size-8 text-primary" />
             )}
             <span className="mt-3 text-sm font-medium">
-              {busy ? "Cutting background…" : "Click to choose an image"}
+              {busy
+                ? "Cutting background…"
+                : dragging
+                  ? "Drop your image to start"
+                  : "Drag & drop an image here"}
+            </span>
+            <span className="mt-1 text-xs text-muted-foreground">
+              or click to browse · PNG, JPG, WebP
             </span>
           </button>
           <input
