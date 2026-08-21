@@ -262,11 +262,22 @@ function Dashboard() {
                 <div className="flex items-center gap-3">
                   <Badge variant={job.status === "succeeded" ? "secondary" : "outline"}>{job.status}</Badge>
                   {job.result_url ? (
-                    <Button variant="ghost" size="sm" asChild>
-                      <a href={job.result_url} target="_blank" rel="noreferrer">
-                        View
-                      </a>
-                    </Button>
+                    <>
+                      <Button variant="ghost" size="sm" asChild>
+                        <a href={job.result_url} target="_blank" rel="noreferrer">
+                          View
+                        </a>
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() =>
+                          void downloadImage(job.result_url!, `${job.file_name ?? "cutout"}.png`)
+                        }
+                      >
+                        <Download className="mr-1.5 size-4" /> Download
+                      </Button>
+                    </>
                   ) : null}
                 </div>
               </div>
