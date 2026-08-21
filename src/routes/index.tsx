@@ -82,8 +82,9 @@ function Home() {
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Button variant="hero" size="xl" asChild>
-                <Link to="/pricing">Start free — 5 images/day</Link>
+                <Link to="/dashboard">Upload an image — free</Link>
               </Button>
+
               <Button variant="neon" size="xl" asChild>
                 <Link to="/api-docs">Read the API docs</Link>
               </Button>
@@ -149,8 +150,9 @@ function Home() {
             </p>
           </div>
           <Button variant="hero" size="xl" asChild>
-            <Link to="/pricing">See plans</Link>
+            <Link to="/dashboard">Upload an image</Link>
           </Button>
+
         </div>
       </section>
     </>
