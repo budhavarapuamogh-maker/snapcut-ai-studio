@@ -46,6 +46,24 @@ function Dashboard() {
   const [preview, setPreview] = useState<string | null>(null);
   const [result, setResult] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+  const [dragging, setDragging] = useState(false);
+
+  async function downloadImage(url: string, name: string) {
+    try {
+      const response = await fetch(url);
+      const blob = await response.blob();
+      const href = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = href;
+      link.download = name;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(href);
+    } catch {
+      toast.error("Download failed. Try opening the image instead.");
+    }
+  }
 
   const process = useServerFn(removeBackground);
   const fetchJobs = useServerFn(listJobs);
