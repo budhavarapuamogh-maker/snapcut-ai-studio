@@ -75,7 +75,7 @@ export function SiteHeader() {
           </Link>
           <Button variant="hero" className="mt-2 w-full" asChild>
             <Link to="/dashboard" onClick={() => setOpen(false)}>
-              Open workspace
+              Upload image
             </Link>
           </Button>
         </nav>
