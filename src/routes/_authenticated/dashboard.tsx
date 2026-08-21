@@ -233,10 +233,12 @@ function Dashboard() {
             )}
           </div>
           {result ? (
-            <Button variant="hero" className="mt-5 w-full" asChild>
-              <a href={result} download="snapcut-cutout.png" target="_blank" rel="noreferrer">
-                <Download className="mr-1.5 size-4" /> Download PNG
-              </a>
+            <Button
+              variant="hero"
+              className="mt-5 w-full"
+              onClick={() => void downloadImage(result, "snapcut-cutout.png")}
+            >
+              <Download className="mr-1.5 size-4" /> Download PNG
             </Button>
           ) : null}
         </section>
