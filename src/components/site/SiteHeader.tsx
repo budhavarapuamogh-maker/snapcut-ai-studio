@@ -38,7 +38,7 @@ export function SiteHeader() {
             <Link to="/auth">Sign in</Link>
           </Button>
           <Button variant="hero" size="sm" asChild>
-            <Link to="/dashboard">Open workspace</Link>
+            <Link to="/dashboard">Upload image</Link>
           </Button>
         </div>
 
