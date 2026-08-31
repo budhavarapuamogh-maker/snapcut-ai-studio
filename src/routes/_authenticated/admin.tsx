@@ -50,7 +50,7 @@ function AdminPage() {
         <h1 className="text-2xl font-bold">Restricted</h1>
         <p className="mt-2 text-muted-foreground">This area is for SnapCut AI administrators only.</p>
         <Button variant="hero" className="mt-6" asChild>
-          <Link to="/dashboard">Back to workspace</Link>
+          <Link to="/upload">Back to workspace</Link>
         </Button>
       </div>
     );
@@ -66,7 +66,7 @@ function AdminPage() {
           <p className="mt-2 text-muted-foreground">Platform health, users and revenue at a glance.</p>
         </div>
         <Button variant="ghost" size="sm" asChild>
-          <Link to="/dashboard">Workspace</Link>
+          <Link to="/upload">Workspace</Link>
         </Button>
       </div>
 

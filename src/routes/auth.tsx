@@ -42,7 +42,7 @@ function AuthPage() {
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data }) => {
-      if (data.session) navigate({ to: "/dashboard" });
+      if (data.session) navigate({ to: "/upload" });
     });
   }, [navigate]);
 
@@ -62,7 +62,7 @@ function AuthPage() {
       if (mode === "signup") {
         const { error } = await supabase.auth.signUp({
           ...parsed.data,
-          options: { emailRedirectTo: `${window.location.origin}/dashboard` },
+          options: { emailRedirectTo: `${window.location.origin}/upload` },
         });
         if (error) throw error;
         toast.success("Account created. You have 10 free credits.");
@@ -71,7 +71,7 @@ function AuthPage() {
         if (error) throw error;
       }
       const { data } = await supabase.auth.getSession();
-      if (data.session) navigate({ to: "/dashboard" });
+      if (data.session) navigate({ to: "/upload" });
       else toast.info("Check your inbox to confirm your email address.");
     } catch (error) {
       toast.error(error instanceof Error ? error.message : "Authentication failed");
@@ -91,7 +91,7 @@ function AuthPage() {
       return;
     }
     if (result.redirected) return;
-    navigate({ to: "/dashboard" });
+    navigate({ to: "/upload" });
   }
 
   return (

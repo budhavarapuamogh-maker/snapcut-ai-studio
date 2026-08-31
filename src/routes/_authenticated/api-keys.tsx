@@ -69,7 +69,7 @@ function ApiKeysPage() {
         </div>
         <div className="flex gap-2">
           <Button variant="ghost" size="sm" asChild>
-            <Link to="/dashboard">Workspace</Link>
+            <Link to="/upload">Workspace</Link>
           </Button>
           <Button variant="ghost" size="sm" asChild>
             <Link to="/billing">Billing</Link>

@@ -97,7 +97,7 @@ function BillingPage() {
         <div className="flex items-center gap-2">
           <Badge variant="secondary">{account.data?.credits ?? 0} credits</Badge>
           <Button variant="ghost" size="sm" asChild>
-            <Link to="/dashboard">Workspace</Link>
+            <Link to="/upload">Workspace</Link>
           </Button>
         </div>
       </div>
