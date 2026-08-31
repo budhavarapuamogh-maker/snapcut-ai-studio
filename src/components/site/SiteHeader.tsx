@@ -38,7 +38,7 @@ export function SiteHeader() {
             <Link to="/auth">Sign in</Link>
           </Button>
           <Button variant="hero" size="sm" asChild>
-            <Link to="/dashboard">Upload image</Link>
+            <Link to="/upload">Upload image</Link>
           </Button>
         </div>
 
@@ -74,7 +74,7 @@ export function SiteHeader() {
             Sign in
           </Link>
           <Button variant="hero" className="mt-2 w-full" asChild>
-            <Link to="/dashboard" onClick={() => setOpen(false)}>
+            <Link to="/upload" onClick={() => setOpen(false)}>
               Upload image
             </Link>
           </Button>
