@@ -19,11 +19,11 @@ import { Route as FeaturesRouteImport } from './routes/features'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as TermsRouteImport } from './routes/terms'
+import { Route as UploadRouteImport } from './routes/upload'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
 import { Route as AuthenticatedApiKeysRouteImport } from './routes/_authenticated/api-keys'
 import { Route as AuthenticatedBillingRouteImport } from './routes/_authenticated/billing'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
-import { Route as AuthenticatedUploadRouteImport } from './routes/_authenticated/upload'
 import { Route as ApiPublicV1RemoveBackgroundRouteImport } from './routes/api/public/v1/remove-background'
 import { Route as ApiPublicWebhooksRazorpayRouteImport } from './routes/api/public/webhooks/razorpay'
 
@@ -76,6 +76,11 @@ const TermsRoute = TermsRouteImport.update({
   path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
+const UploadRoute = UploadRouteImport.update({
+  id: '/upload',
+  path: '/upload',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
   id: '/admin',
   path: '/admin',
@@ -94,11 +99,6 @@ const AuthenticatedBillingRoute = AuthenticatedBillingRouteImport.update({
 const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
-  getParentRoute: () => AuthenticatedRouteRoute,
-} as any)
-const AuthenticatedUploadRoute = AuthenticatedUploadRouteImport.update({
-  id: '/upload',
-  path: '/upload',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const ApiPublicV1RemoveBackgroundRoute =
@@ -124,11 +124,11 @@ export interface FileRoutesByFullPath {
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
+  '/upload': typeof UploadRoute
   '/admin': typeof AuthenticatedAdminRoute
   '/api-keys': typeof AuthenticatedApiKeysRoute
   '/billing': typeof AuthenticatedBillingRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
-  '/upload': typeof AuthenticatedUploadRoute
   '/api/public/v1/remove-background': typeof ApiPublicV1RemoveBackgroundRoute
   '/api/public/webhooks/razorpay': typeof ApiPublicWebhooksRazorpayRoute
 }
@@ -142,11 +142,11 @@ export interface FileRoutesByTo {
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
+  '/upload': typeof UploadRoute
   '/admin': typeof AuthenticatedAdminRoute
   '/api-keys': typeof AuthenticatedApiKeysRoute
   '/billing': typeof AuthenticatedBillingRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
-  '/upload': typeof AuthenticatedUploadRoute
   '/api/public/v1/remove-background': typeof ApiPublicV1RemoveBackgroundRoute
   '/api/public/webhooks/razorpay': typeof ApiPublicWebhooksRazorpayRoute
 }
@@ -162,11 +162,11 @@ export interface FileRoutesById {
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
+  '/upload': typeof UploadRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRoute
   '/_authenticated/api-keys': typeof AuthenticatedApiKeysRoute
   '/_authenticated/billing': typeof AuthenticatedBillingRoute
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
-  '/_authenticated/upload': typeof AuthenticatedUploadRoute
   '/api/public/v1/remove-background': typeof ApiPublicV1RemoveBackgroundRoute
   '/api/public/webhooks/razorpay': typeof ApiPublicWebhooksRazorpayRoute
 }
@@ -182,11 +182,11 @@ export interface FileRouteTypes {
     | '/pricing'
     | '/privacy'
     | '/terms'
+    | '/upload'
     | '/admin'
     | '/api-keys'
     | '/billing'
     | '/dashboard'
-    | '/upload'
     | '/api/public/v1/remove-background'
     | '/api/public/webhooks/razorpay'
   fileRoutesByTo: FileRoutesByTo
@@ -200,11 +200,11 @@ export interface FileRouteTypes {
     | '/pricing'
     | '/privacy'
     | '/terms'
+    | '/upload'
     | '/admin'
     | '/api-keys'
     | '/billing'
     | '/dashboard'
-    | '/upload'
     | '/api/public/v1/remove-background'
     | '/api/public/webhooks/razorpay'
   id:
@@ -219,11 +219,11 @@ export interface FileRouteTypes {
     | '/pricing'
     | '/privacy'
     | '/terms'
+    | '/upload'
     | '/_authenticated/admin'
     | '/_authenticated/api-keys'
     | '/_authenticated/billing'
     | '/_authenticated/dashboard'
-    | '/_authenticated/upload'
     | '/api/public/v1/remove-background'
     | '/api/public/webhooks/razorpay'
   fileRoutesById: FileRoutesById
@@ -239,6 +239,7 @@ export interface RootRouteChildren {
   PricingRoute: typeof PricingRoute
   PrivacyRoute: typeof PrivacyRoute
   TermsRoute: typeof TermsRoute
+  UploadRoute: typeof UploadRoute
   ApiPublicV1RemoveBackgroundRoute: typeof ApiPublicV1RemoveBackgroundRoute
   ApiPublicWebhooksRazorpayRoute: typeof ApiPublicWebhooksRazorpayRoute
 }
@@ -315,6 +316,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/upload': {
+      id: '/upload'
+      path: '/upload'
+      fullPath: '/upload'
+      preLoaderRoute: typeof UploadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/_authenticated/admin': {
       id: '/_authenticated/admin'
       path: '/admin'
@@ -343,13 +351,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedDashboardRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
-    '/_authenticated/upload': {
-      id: '/_authenticated/upload'
-      path: '/upload'
-      fullPath: '/upload'
-      preLoaderRoute: typeof AuthenticatedUploadRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
     '/api/public/v1/remove-background': {
       id: '/api/public/v1/remove-background'
       path: '/api/public/v1/remove-background'
@@ -372,7 +373,6 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedApiKeysRoute: typeof AuthenticatedApiKeysRoute
   AuthenticatedBillingRoute: typeof AuthenticatedBillingRoute
   AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
-  AuthenticatedUploadRoute: typeof AuthenticatedUploadRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
@@ -380,7 +380,6 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedApiKeysRoute: AuthenticatedApiKeysRoute,
   AuthenticatedBillingRoute: AuthenticatedBillingRoute,
   AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
-  AuthenticatedUploadRoute: AuthenticatedUploadRoute,
 }
 
 const AuthenticatedRouteRouteWithChildren =
@@ -397,6 +396,7 @@ const rootRouteChildren: RootRouteChildren = {
   PricingRoute: PricingRoute,
   PrivacyRoute: PrivacyRoute,
   TermsRoute: TermsRoute,
+  UploadRoute: UploadRoute,
   ApiPublicV1RemoveBackgroundRoute: ApiPublicV1RemoveBackgroundRoute,
   ApiPublicWebhooksRazorpayRoute: ApiPublicWebhooksRazorpayRoute,
 }
